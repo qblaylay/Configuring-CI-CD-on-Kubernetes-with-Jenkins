@@ -32,8 +32,9 @@ pipeline {
         }
       }
   }
+  */
 }
-*/
+
   /*
 post {
     success {
