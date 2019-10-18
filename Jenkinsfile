@@ -18,12 +18,12 @@ pipeline {
         }
       }
     }
-    
     stage('Docker Remove Image') {
       steps {
         sh "docker rmi kozcan/podinfo:${env.BUILD_NUMBER}"
       }
-    }/*
+    }
+    /*
    stage('Apply Kubernetes Files') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
@@ -33,6 +33,7 @@ pipeline {
       }
   }
 }
+*/
   /*
 post {
     success {
