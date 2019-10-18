@@ -4,13 +4,17 @@ pipeline {
     stage('Docker Build') {
       steps {
         sh "docker build -t kozcan/podinfo:${env.BUILD_NUMBER} ."
+        echo 'Build is completed. '
+      
       }
     }
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          echo 'Login completed. '
           sh "docker push kozcan/podinfo:${env.BUILD_NUMBER}"
+          echo 'PUSH completed. '
         }
       }
     }
